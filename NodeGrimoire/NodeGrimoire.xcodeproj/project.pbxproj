@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		760C9AF62E7F62600060F805 /* BehindGameKit in Frameworks */ = {isa = PBXBuildFile; productRef = 760C9AF52E7F62600060F805 /* BehindGameKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		760C9AE52E7F61D50060F805 /* NodeGrimoire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NodeGrimoire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				760C9AF62E7F62600060F805 /* BehindGameKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = NodeGrimoire;
 			packageProductDependencies = (
+				760C9AF52E7F62600060F805 /* BehindGameKit */,
 			);
 			productName = NodeGrimoire;
 			productReference = 760C9AE52E7F61D50060F805 /* NodeGrimoire.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 760C9ADC2E7F61D50060F805;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				760C9AF42E7F62600060F805 /* XCLocalSwiftPackageReference "../../BehindGameKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 760C9AE62E7F61D50060F805 /* Products */;
 			projectDirPath = "";
@@ -321,6 +330,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		760C9AF42E7F62600060F805 /* XCLocalSwiftPackageReference "../../BehindGameKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../BehindGameKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		760C9AF52E7F62600060F805 /* BehindGameKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BehindGameKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 760C9ADD2E7F61D50060F805 /* Project object */;
 }
