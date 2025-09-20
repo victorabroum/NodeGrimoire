@@ -11,14 +11,35 @@ import BehindGameKit
 
 class PlayerEntity: GKEntity {
     
+    private var moveComp: HorizontalMovementComponent? {
+        return self.component(ofType: HorizontalMovementComponent.self)
+    }
+    
     override init() {
         super.init()
         
-        var node = SKSpriteNode(color: .cyan, size: .init(width: 160, height: 160))
+        let node = SKSpriteNode(color: .cyan, size: .init(width: 160, height: 160))
         self.addComponent(GKSKNodeComponent(node: node))
+        
+        self.addComponent(ControlableComponent(delegate: self))
+        self.addComponent(HorizontalMovementComponent())
+    }
+    
+    public func setupControl(inputHandler: InputHandler, virtualController: VirtualController?) {
+        self.component(ofType: ControlableComponent.self)?.setupController(inputHandler: inputHandler, virtualController: virtualController)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension PlayerEntity: ControlableDelegate {
+    func handleMovement(direction: CGPoint) {
+        moveComp?.change(direction: direction)
+    }
+    
+    func handleButtonAPressed() {
+        print("A pressd")
     }
 }

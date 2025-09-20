@@ -19,10 +19,12 @@ class SandboxScene: SKGameScene {
     override func sceneDidLoad() {
         super.sceneDidLoad()
         setupScene()
+        self.inputHandler.observeKeyboardInputs()
     }
     
     private func setupScene() {
         let playerEntity = PlayerEntity()
         SKEntityManager.shared.add(playerEntity)
+        playerEntity.setupControl(inputHandler: inputHandler, virtualController: virtualController)
     }
 }

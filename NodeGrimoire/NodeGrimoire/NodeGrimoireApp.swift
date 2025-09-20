@@ -11,7 +11,7 @@ import SwiftUI
 struct NodeGrimoireApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SandboxView()
         }
     }
 }
