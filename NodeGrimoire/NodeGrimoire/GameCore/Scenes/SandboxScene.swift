@@ -15,4 +15,14 @@ class SandboxScene: SKGameScene {
         scene.anchorPoint = .centered
         return scene
     }
+    
+    override func sceneDidLoad() {
+        super.sceneDidLoad()
+        setupScene()
+    }
+    
+    private func setupScene() {
+        let playerEntity = PlayerEntity()
+        SKEntityManager.shared.add(playerEntity)
+    }
 }
