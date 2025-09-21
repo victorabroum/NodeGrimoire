@@ -7,6 +7,7 @@
 
 import SpriteKit
 import BehindGameKit
+import GameplayKit
 
 class SandboxScene: SKGameScene {
     public static func create(withSize size: CGSize = .init(width: 1920, height: 1080)) -> SandboxScene {
@@ -23,8 +24,14 @@ class SandboxScene: SKGameScene {
     }
     
     private func setupScene() {
+        // Player
         let playerEntity = PlayerEntity()
         SKEntityManager.shared.add(playerEntity)
         playerEntity.setupControl(inputHandler: inputHandler, virtualController: virtualController)
+        
+        // Ground
+        let ground = GroundEntity()
+        SKEntityManager.shared.add(ground)
+        ground.component(ofType: GKSKNodeComponent.self)?.node.position.y = -self.size.height/2 + 80
     }
 }
