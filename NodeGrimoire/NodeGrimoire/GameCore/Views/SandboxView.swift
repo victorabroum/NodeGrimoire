@@ -10,7 +10,7 @@ import SpriteKit
 
 struct SandboxView: View {
     var body: some View {
-        SpriteView(scene: SandboxScene.create())
+        SpriteView(scene: SandboxScene.create(), debugOptions: .debugOptions)
     }
 }
 

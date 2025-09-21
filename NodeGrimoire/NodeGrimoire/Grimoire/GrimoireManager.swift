@@ -9,10 +9,13 @@ import SpriteKit
 
 class GrimoireManager {
     
+    public static var shared: GrimoireManager?
+    
     var scene: SKScene
     
     public init(scene: SKScene) {
         self.scene = scene
+        GrimoireManager.shared = self
     }
     
     public func addChild(at node: SKNode) {
@@ -20,6 +23,10 @@ class GrimoireManager {
         scene.addChild(node)
         node.position = node.position
         node.position.x += 24
+    }
+    
+    public func open() {
+        print("HUD do grimoire aparece e agora pode interagir com ele!")
     }
     
 }

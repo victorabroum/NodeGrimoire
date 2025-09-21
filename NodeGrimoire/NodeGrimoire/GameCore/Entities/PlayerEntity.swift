@@ -19,6 +19,10 @@ class PlayerEntity: GKEntity {
         return self.component(ofType: JumpComponent.self)
     }
     
+    private var interactor: InteractorComponent? {
+        return self.component(ofType: InteractorComponent.self)
+    }
+    
     override init() {
         super.init()
         
@@ -27,6 +31,9 @@ class PlayerEntity: GKEntity {
         
         
         let body = SKPhysicsBody(rectangleOf: node.size)
+        body.categoryBitMask = .player
+        body.collisionBitMask = .contactWithAllCategories(less: [.items])
+        body.contactTestBitMask = ~(.contactWithAllCategories(less:[.items]))
         self.addComponent(PhysicsBodyComponent(body: body))
         
         self.addComponent(ControlableComponent(delegate: self))
@@ -34,6 +41,10 @@ class PlayerEntity: GKEntity {
         
         let jumpComp = JumpComponent(jumpForce: 5.5)
         self.addComponent(jumpComp)
+        
+        self.addComponent(IsPlayerComponent())
+        
+        self.addComponent(InteractorComponent())
     }
     
     public func setupControl(inputHandler: InputHandler, virtualController: VirtualController?) {
@@ -52,5 +63,9 @@ extension PlayerEntity: ControlableDelegate {
     
     func handleButtonAPressed() {
         jumpComp?.tryJump()
+    }
+    
+    func handleButtonBPressed() {
+        interactor?.interact()
     }
 }

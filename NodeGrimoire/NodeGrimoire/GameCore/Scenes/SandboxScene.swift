@@ -10,6 +10,7 @@ import BehindGameKit
 import GameplayKit
 
 class SandboxScene: SKGameScene {
+    
     public static func create(withSize size: CGSize = .init(width: 1920, height: 1080)) -> SandboxScene {
         let scene = SandboxScene(size: size)
         scene.scaleMode = .aspectFill
@@ -19,6 +20,7 @@ class SandboxScene: SKGameScene {
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        physicsWorld.contactDelegate = self
         setupScene()
         self.inputHandler.observeKeyboardInputs()
     }
@@ -37,13 +39,21 @@ class SandboxScene: SKGameScene {
     
     private func setupScene() {
         
-        self.camera?.setScale(0.5)
+        let _ = GrimoireManager(scene: self)
+        
+        self.camera?.setScale(0.3)
         
         setupPlayer()
         
         // Ground
         let ground = GroundEntity()
         SKEntityManager.shared.add(ground)
-        ground.component(ofType: GKSKNodeComponent.self)?.node.position.y = -self.size.height/2
+        ground.component(ofType: GKSKNodeComponent.self)?.node.position.y = -100
+        
+        // Spawn Crystal
+        let crystal = SpawnCrystalEntity()
+        SKEntityManager.shared.add(crystal)
+        crystal.position = .init(x: 32,
+                                 y: -100 + 32)
     }
 }
