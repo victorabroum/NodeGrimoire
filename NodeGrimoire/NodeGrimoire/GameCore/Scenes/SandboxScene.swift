@@ -36,11 +36,14 @@ class SandboxScene: SKGameScene {
     }
     
     private func setupScene() {
+        
+        self.camera?.setScale(0.5)
+        
         setupPlayer()
         
         // Ground
         let ground = GroundEntity()
         SKEntityManager.shared.add(ground)
-        ground.component(ofType: GKSKNodeComponent.self)?.node.position.y = -self.size.height/2 + 80
+        ground.component(ofType: GKSKNodeComponent.self)?.node.position.y = -self.size.height/2
     }
 }

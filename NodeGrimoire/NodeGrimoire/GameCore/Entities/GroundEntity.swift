@@ -14,7 +14,7 @@ class GroundEntity: GKEntity {
     override init() {
         super.init()
         
-        let node = SKShapeNode(rectOf: .init(width: 1920, height: 80))
+        let node = SKShapeNode(rectOf: .init(width: 1920, height: 32))
         node.fillColor = .brown
         self.addComponent(GKSKNodeComponent(node: node))
         

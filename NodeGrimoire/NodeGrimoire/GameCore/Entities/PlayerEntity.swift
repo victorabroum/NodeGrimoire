@@ -22,7 +22,7 @@ class PlayerEntity: GKEntity {
     override init() {
         super.init()
         
-        let node = SKSpriteNode(color: .cyan, size: .init(width: 160, height: 160))
+        let node = SKSpriteNode(color: .cyan, size: .init(width: 16, height: 16))
         self.addComponent(GKSKNodeComponent(node: node))
         
         
@@ -30,9 +30,9 @@ class PlayerEntity: GKEntity {
         self.addComponent(PhysicsBodyComponent(body: body))
         
         self.addComponent(ControlableComponent(delegate: self))
-        self.addComponent(HorizontalMovementComponent(speed: 1, maxSpeed: 10))
+        self.addComponent(HorizontalMovementComponent(speed: 1, maxSpeed: 3))
         
-        let jumpComp = JumpComponent(jumpForce: 1000)
+        let jumpComp = JumpComponent(jumpForce: 5.5)
         self.addComponent(jumpComp)
     }
     
