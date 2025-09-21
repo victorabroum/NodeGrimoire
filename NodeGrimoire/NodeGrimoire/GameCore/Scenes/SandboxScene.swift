@@ -23,11 +23,20 @@ class SandboxScene: SKGameScene {
         self.inputHandler.observeKeyboardInputs()
     }
     
-    private func setupScene() {
+    fileprivate func setupPlayer() {
         // Player
         let playerEntity = PlayerEntity()
         SKEntityManager.shared.add(playerEntity)
         playerEntity.setupControl(inputHandler: inputHandler, virtualController: virtualController)
+        
+        if let camera {
+            let cameraComp = CameraFollowComponent(camera: camera)
+            playerEntity.addComponent(cameraComp)
+        }
+    }
+    
+    private func setupScene() {
+        setupPlayer()
         
         // Ground
         let ground = GroundEntity()
